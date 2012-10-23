@@ -1,0 +1,23 @@
+.scout-console {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99999;
+  padding: 7px;
+  font-family: sans-serif;
+  font-size: 12px;
+  color: #ffffff;
+  background-color: #000000;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+.scout-logo {
+  font-weight: bold;
+  padding-bottom: 3px;
+}
+.scout-info {
+  text-rendering: optimizeLegibility;
+}
+.scout-scouter-info {
+  width: auto;
+}

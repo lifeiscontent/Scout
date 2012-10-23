@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scout</title>
+    <script src="jquery-1.8.2.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-35695570-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    <script type="text/javascript">
+      window.scout = { initialized: false };
+      function commandHandler(event) {
+        console.log('command', arguments);
+        if(event.command === "initialize") {
+          _gaq.push(['_trackEvent', 'safari', 'loaded']);
+          scout.initialized = !scout.initialized;
+          safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("initialize", scout.initialized);
+        }
+      }
+      function validateHandler(event) {
+        console.log('validate', arguments);
+        if(event.command === "initialize") {
+          event.target.disabled = !event.target.browserWindow.activeTab.url;
+        }
+      }
+      function messageHandler(event) {
+        console.log('message', arguments);
+        if (msg.name === 'getJSON') {
+          req = msg.message;
+          req.data = req.data || {};
+          jQuery.getJSON(req.url, req.data, function (data) {
+            msg.target.page.dispatchMessage(req.callbackNo, data);
+          });
+        }
+      }
+      safari.application.addEventListener("command", commandHandler, false);
+      safari.application.addEventListener("validate", validateHandler, false);
+      safari.application.addEventListener("message", messageHandler, false);
+    </script>
+  </body>
+</html>
