@@ -21,6 +21,7 @@ class Scout
         <p> Change Color: Shift+C </p>
         <p> Change Opacity: Shift+X </p>
         <p> Quick Close: Esc </p>
+        <p> <a href="mailto:aaron@lifeiscontent.net">Contact</a> </p>
       </details>
     """).appendTo(@UIConsole)
     @UIScouters = $('<div class="scout-scouters" />').hide()
@@ -104,7 +105,7 @@ class Scouter
       <p>x: #{@x}px</p>
       <p>y: #{@y}px</p>
       <p>width: #{@width}px</p>
-      <p>height: #{@el[@widthType]()}px</p>
+      <p>height: #{@height}px</p>
       <p>color: rgb(#{@color})</p>
       <p>opacity: #{@opacity}</p>
     """

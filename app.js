@@ -23,7 +23,7 @@
       this.UIConsole = $('<div class="scout-console" />').hide();
       this.UILogo = $('<div class="scout-logo" />').text("Scout").appendTo(this.UIConsole);
       this.UIInfoLogger = $('<details class="scout-info" open><summary>Scouters</summary></details>').appendTo(this.UIConsole);
-      $("<details class=\"scout-info\">\n  <summary>Key</summary>\n  <p> Change Color: Shift+C </p>\n  <p> Change Opacity: Shift+X </p>\n  <p> Quick Close: Esc </p>\n</details>").appendTo(this.UIConsole);
+      $("<details class=\"scout-info\">\n  <summary>Key</summary>\n  <p> Change Color: Shift+C </p>\n  <p> Change Opacity: Shift+X </p>\n  <p> Quick Close: Esc </p>\n  <p> <a href=\"mailto:aaron@lifeiscontent.net\">Contact</a> </p>\n</details>").appendTo(this.UIConsole);
       this.UIScouters = $('<div class="scout-scouters" />').hide();
       this.UIConsole.prependTo('body');
       this.UIScouters.prependTo('body');
@@ -147,7 +147,7 @@
     };
 
     Scouter.prototype.render = function() {
-      this.log.html("<p>x: " + this.x + "px</p>\n<p>y: " + this.y + "px</p>\n<p>width: " + this.width + "px</p>\n<p>height: " + (this.el[this.widthType]()) + "px</p>\n<p>color: rgb(" + this.color + ")</p>\n<p>opacity: " + this.opacity + "</p>");
+      this.log.html("<p>x: " + this.x + "px</p>\n<p>y: " + this.y + "px</p>\n<p>width: " + this.width + "px</p>\n<p>height: " + this.height + "px</p>\n<p>color: rgb(" + this.color + ")</p>\n<p>opacity: " + this.opacity + "</p>");
       return this.el.css({
         position: 'absolute',
         pointerEvents: 'none',
