@@ -10,11 +10,11 @@
                 <key>Developer Identifier</key>
                 <string>B688E4J8WB</string>
                 <key>CFBundleVersion</key>
-                <string>1.1.5</string>
+                <string>1.1.6</string>
                 <key>CFBundleShortVersionString</key>
-                <string>1.1.5</string>
+                <string>1.1.6</string>
                 <key>URL</key>
-                <string>https://github.com/lifeiscontent/Scout/releases/download/1.1.5/scout-1.1.5-safari.safariextz</string>
+                <string>https://github.com/lifeiscontent/Scout/releases/download/1.1.6/scout-safari.safariextz</string>
             </dict>
         </array>
     </dict>

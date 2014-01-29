@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.5</string>
+	<string>1.1.6</string>
 	<key>CFBundleVersion</key>
-	<string>1.1.5</string>
+	<string>1.1.6</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -28,7 +28,7 @@
 				<key>Identifier</key>
 				<string>browserAction</string>
 				<key>Image</key>
-				<string>images/icon-16.png</string>
+				<string>icon-16.png</string>
 				<key>Include By Default</key>
 				<true/>
 				<key>Label</key>

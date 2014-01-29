@@ -3,7 +3,7 @@ class @Scout
     @initialized = false
     @scouters = []
     @currentScouter = null
-    @version = "1.1.3"
+    @version = "1.1.6"
     @colors = [
       [255,0,0] # red
       [0,255,0] # green
