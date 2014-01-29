@@ -1,0 +1,36 @@
+{
+    "name": "Scout",
+    "description": "Scout is a tool to help investigate your designs.",
+    "version": "1.1.5",
+    "permissions": [
+        "activeTab"
+    ],
+    "icons": {
+        "16": "icon-16.png",
+        "48": "icon-48.png",
+        "128": "icon.png"
+    },
+    "background": {
+        "scripts": ["backgrounds/chrome.js"],
+        "persistent": false
+    },
+    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "css": ["stylesheets/app.css"],
+            "js": ["javascripts/jquery.js", "javascripts/app.js", "javascripts/chrome.js"]
+        }
+    ],
+    "web_accessible_resources": [
+        "javascripts/app.map"
+    ],
+    "browser_action": {
+        "default_title": "Activate Scout",
+        "default_icon": {
+            "19": "icon-19.png"
+        }
+    },
+    "manifest_version": 2,
+    "offline_enabled": true
+}
