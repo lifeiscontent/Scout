@@ -13,7 +13,7 @@ chrome.runtime.onMessage.addListener(function(event, sender, sendResponse) {
                 _gaq.push(['_setAccount', 'UA-35695570-1']);
                 _gaq.push(['_trackPageview']);
                 _gaq.push(['_trackEvent', 'chrome', 'loaded']);
-                _gaq.push(['_setCustomVar', 1, 'Version', '1.1.6', 2]);
+                _gaq.push(['_setCustomVar', 1, 'Version', '1.1.7', 2]);
             }
         break;
         case "referralLinkClicked":

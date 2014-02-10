@@ -11,7 +11,7 @@
       this.initialized = false;
       this.scouters = [];
       this.currentScouter = null;
-      this.version = "1.1.6";
+      this.version = "1.1.7";
       this.colors = [[255, 0, 0], [0, 255, 0], [0, 0, 255]];
       this.widths = ['outerWidth', 'width', 'innerWidth'];
       this.opacity = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9];
