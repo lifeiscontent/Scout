@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Aaron Reisman</string>
 	<key>Builder Version</key>
-	<string>9537.73.11</string>
+	<string>12602.3.12.0.1</string>
 	<key>CFBundleDisplayName</key>
 	<string>Scout</string>
 	<key>CFBundleIdentifier</key>
@@ -46,21 +46,20 @@
 		<dict>
 			<key>End</key>
 			<array>
-				<string>javascripts/app.js</string>
+				<string>javascripts/app.react.min.js</string>
 				<string>javascripts/safari.js</string>
 			</array>
 			<key>Start</key>
 			<array>
-				<string>javascripts/jquery.js</string>
+				<string>javascripts/react.min.js</string>
+				<string>javascripts/react-dom.min.js</string>
 			</array>
 		</dict>
-		<key>Stylesheets</key>
-		<array>
-			<string>stylesheets/app.css</string>
-		</array>
 	</dict>
 	<key>Description</key>
 	<string>Scout is a tool to help investigate your designs.</string>
+	<key>DeveloperIdentifier</key>
+	<string>0000000000</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>

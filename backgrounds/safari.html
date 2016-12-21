@@ -1,36 +1,36 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>global HTML page</title>
-    <script type="text/javascript">
-        var _gaq = _gaq || [];
-        var scoutFirstTime = true;
+  <title>global HTML page</title>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  var scoutFirstTime = true;
 
-        safari.application.addEventListener("command", function(event) {
-            switch (event.command) {
-                case "onClicked":
-                    event.target.browserWindow.activeTab.page.dispatchMessage("onClicked", {firstTime: scoutFirstTime});
-                    scoutFirstTime = false;
-                break;
-            }
-        }, false);
+  safari.application.addEventListener("command", function(event) {
+    switch (event.command) {
+      case "onClicked":
+      event.target.browserWindow.activeTab.page.dispatchMessage("onClicked", {firstTime: scoutFirstTime});
+      scoutFirstTime = false;
+      break;
+    }
+  }, false);
 
-        safari.application.addEventListener("message", function(event) {
-            switch (event.name) {
-                case "onClicked":
-                    if (event.message.firstTime) {
-                        _gaq.push(['_setAccount', 'UA-35695570-1']);
-                        _gaq.push(['_trackPageview']);
-                        _gaq.push(['_trackEvent', 'chrome', 'loaded']);
-                        _gaq.push(['_setCustomVar', 1, 'Version', '1.1.7', 2]);
-                    }
-                break;
-                case "referralLinkClicked":
-                    _gaq.push(['_trackEvent', 'referral_link_clicked', 'clicked']);
-                break;
-            }
-        },false);
-    </script>
+  safari.application.addEventListener("message", function(event) {
+    switch (event.name) {
+      case "onClicked":
+      if (event.message.firstTime) {
+        _gaq.push(['_setAccount', 'UA-35695570-1']);
+        _gaq.push(['_trackPageview']);
+        _gaq.push(['_trackEvent', 'chrome', 'loaded']);
+        _gaq.push(['_setCustomVar', 1, 'Version', '1.1.7', 2]);
+      }
+      break;
+      case "referralLinkClicked":
+      _gaq.push(['_trackEvent', 'referral_link_clicked', 'clicked']);
+      break;
+    }
+  },false);
+  </script>
 </head>
 <body>
 </body>

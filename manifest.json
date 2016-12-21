@@ -18,12 +18,13 @@
     "content_scripts": [
         {
             "matches": ["<all_urls>"],
-            "css": ["stylesheets/app.css"],
-            "js": ["javascripts/jquery.js", "javascripts/app.js", "javascripts/chrome.js"]
+            "js": [
+              "javascripts/react.min.js",
+              "javascripts/react-dom.min.js",
+              "javascripts/app.react.min.js",
+              "javascripts/chrome.js"
+            ]
         }
-    ],
-    "web_accessible_resources": [
-        "javascripts/app.map"
     ],
     "browser_action": {
         "default_title": "Activate Scout",

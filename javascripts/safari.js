@@ -1,22 +1,20 @@
 (function() {
-    var scout = null;
+  var rootNode = document.createElement('div');
+  document.body.appendChild(rootNode);
+  var scoutUnmounted = true;
     safari.self.addEventListener("message", function(event) {
         switch (event.name) {
             case "onClicked":
                 safari.self.tab.dispatchMessage("onClicked", event.message);
-                if (!scout) {
-                    scout = new Scout();
-                }
-                if (scout.initialized) {
-                    scout.destroy();
+                if (scoutUnmounted) {
+                    scoutUnmounted = false;
+                    ReactDOM.render(React.createElement(Scout, null), rootNode);
                 } else {
-                    scout.initialize();
+                    scoutUnmounted = ReactDOM.unmountComponentAtNode(rootNode);
                 }
             break;
         }
     }, false);
 
-    $('body').on('scout::referral-link', function(event) {
-        safari.self.tab.dispatchMessage("referralLinkClicked");
-    });
+    // safari.self.tab.dispatchMessage("referralLinkClicked");
 })();

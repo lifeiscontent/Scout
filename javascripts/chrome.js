@@ -1,22 +1,21 @@
 (function() {
-    var scout = null;
+    var rootNode = document.createElement('div');
+    document.body.appendChild(rootNode);
+    var scoutUnmounted = true;
     chrome.runtime.onMessage.addListener(function(event, sender, sendResponse) {
+      console.log(scoutUnmounted);
         switch (event.name) {
             case "onClicked":
                 chrome.runtime.sendMessage(event);
-                if (!scout) {
-                    scout = new Scout();
-                }
-                if (scout.initialized) {
-                    scout.destroy();
+                if (scoutUnmounted) {
+                    scoutUnmounted = false;
+                    ReactDOM.render(React.createElement(Scout, null), rootNode);
                 } else {
-                    scout.initialize();
+                    scoutUnmounted = ReactDOM.unmountComponentAtNode(rootNode);
                 }
             break;
         }
     });
 
-    $('body').on('scout::referral-link', function(event) {
-        chrome.runtime.sendMessage({event: "referralLinkClicked"});
-    });
+    // chrome.runtime.sendMessage({event: "referralLinkClicked"});
 })();
