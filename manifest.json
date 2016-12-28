@@ -1,7 +1,7 @@
 {
     "name": "Scout",
     "description": "Scout is a tool to help investigate your designs.",
-    "version": "1.1.7",
+    "version": "2.0.0",
     "permissions": [
         "activeTab"
     ],

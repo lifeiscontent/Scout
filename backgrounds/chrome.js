@@ -1,29 +1,49 @@
 var _gaq = _gaq || [];
-var scoutFirstTime = true;
+var lastTabId = -1;
 
 chrome.browserAction.onClicked.addListener(function(tab) {
-    chrome.tabs.sendMessage(tab.id, { name: "onClicked", message: { firstTime: scoutFirstTime }});
-    scoutFirstTime = false;
+  lastTabId = tab.id;
+  chrome.browserAction.getBadgeText({}, function(response) {
+    if (response === 'ON') {
+      chrome.browserAction.setBadgeText({text: ''});
+      chrome.tabs.sendMessage(tab.id, {type: 'unmount'});
+    } else {
+      chrome.browserAction.setBadgeText({text: 'ON'});
+      chrome.tabs.sendMessage(tab.id, {type: 'mount'});
+      chrome.tabs.sendMessage(tab.id, {
+        type: 'google-analytics',
+        payload: ['_setAccount', 'UA-35695570-1']
+      });
+      chrome.tabs.sendMessage(tab.id, {
+        type: 'google-analytics',
+        payload: ['_trackPageview']
+      });
+      chrome.tabs.sendMessage(tab.id, {
+        type: 'google-analytics',
+        payload: ['_setCustomVar', 1, 'Version', '2.0.0', 2]
+      });
+    }
+  });
 });
 
 chrome.runtime.onMessage.addListener(function(event, sender, sendResponse) {
-    switch (event.name) {
-        case "onClicked":
-            if (event.message.firstTime) {
-                _gaq.push(['_setAccount', 'UA-35695570-1']);
-                _gaq.push(['_trackPageview']);
-                _gaq.push(['_trackEvent', 'chrome', 'loaded']);
-                _gaq.push(['_setCustomVar', 1, 'Version', '1.1.7', 2]);
-            }
-        break;
-        case "referralLinkClicked":
-            _gaq.push(['_trackEvent', 'referral_link_clicked', 'clicked']);
-        break;
-    }
+  switch(event.type) {
+    case 'unmount':
+      chrome.browserAction.setBadgeText({text: ''});
+      chrome.tabs.sendMessage(lastTabId, {type: 'unmount'});
+    break;
+    case 'google-analytics':
+      _gaq.push(event.payload);
+    break;
+  }
+  sendResponse(event.type);
 });
 
 (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = 'https://ssl.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  var ga = document.createElement('script');
+  ga.type = 'text/javascript';
+  ga.async = true;
+  ga.src = 'https://ssl.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(ga, s);
 })();

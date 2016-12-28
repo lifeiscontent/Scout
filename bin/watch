@@ -1,3 +1,3 @@
 #!/bin/bash
 
-babel --watch --presets=react javascripts/app.react.js -o javascripts/app.react.min.js
+babel --watch --presets=es2015,react,stage-2 javascripts/app.react.js -o javascripts/app.react.min.js
